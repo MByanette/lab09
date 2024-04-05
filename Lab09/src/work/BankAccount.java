@@ -1,42 +1,56 @@
 package work;
 
-class SavingsAccount extends BankAccount {
+abstract class BankAccount extends SavingsAccount{
 	int balance;
+	int numDeposit;
+	int numWithdrawl;
 	double annualInterestRate;
-	int amount;
-	boolean status;
-
-	public void BankAccount(int balance, double annualInterestRate) {
-	     status = true; 
-	    }
-
-	    @Override
-	    public void withdraw(int amount) {
-	        if (status) {
-	            this.withdraw(amount);
-	            if (balance < 25)
-	                status = false;
-	        }
-	    }
-
-	    @Override
-	    public void deposit(int amount) {
-	        if (status) {
-	        	this.deposit(amount);
-	        	if(balance > 25)
-	            status = true;
-	        }
-	    }
-
-	    @Override
-	    public void monthlyServiceCharges() {
-	        if (numWithdrawl > 4) {
-	            monthlyServiceCharges += (numWithdrawl - 4);
-	            balance -= (numWithdrawl - 4);
-	            if (balance < 25)
-	                status = false;
-	        }
-	        this.monthlyServiceCharges();
-	    }
-
+	double monthlyServiceCharges;
+	
+	
+	
+	
+	public BankAccount(int balance,double annualInterestRate) {
+		this.balance = balance;
+		this.annualInterestRate = annualInterestRate;
 	}
+	public void deposit(int amount) {
+		balance += amount;
+		numDeposit++;
+	}
+	public void withdraw(int amount) {
+		balance -= amount;
+		numWithdrawl++;
+	}
+	
+	public void calcInterest(int monthlyServiceCharges) {
+		int monthlyInterestRate = (annualInterestRate/12);
+		int monthlyInterest = balance*monthlyInterestRate;
+		balance += monthlyInterest;
+	}
+	
+	public void monthlyProcess (int balance) {
+		balance -= monthlySericeCharges;
+		calcInterest();
+		numWithdrawls = 0;
+		numDeposits = 0;
+		monthlyServiceCharges = 0;
+		
+		
+	}
+}
+//	public calcInterest() {
+//		int monthlyIntrestRate = yearlyIntrestRate/12;
+//		int monthlyIntrest = balance * monthlyIntrestRate;
+//		balance += monthlyIntrest
+//	}
+//	public void monthlyProcess() {
+//        balance -= monthlyServiceCharges;
+//        calcInterest();
+//        numWithdrawl = 0;
+//        numDeposit = 0;
+//        monthlyServiceCharges = 0;
+//    }
+//		
+//
+//}

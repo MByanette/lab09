@@ -1,36 +1,60 @@
 package work;
 
-abstract class SavingsAccount {
+class SavingsAccount extends BankAccount {
 	int balance;
-	int numDeposit;
-	int numWithdrawl;
 	double annualInterestRate;
-	double monthlyServiceCharges;
-	public SavingsAccount(int balance,double annualInterestRate) {
-		this.balance = balance;
-		this.annualInterestRate = annualInterestRate;
+	int amount;
+	boolean status;
+	
+	if(balance =< 25) {
+		status = false;
+		System.out.println("Account is in violations of terms of Serice. Account is Innactive.");
 	}
-	public void deposit(int amount) {
-		balance += amount;
-		numDeposit++;
+
+	public void BankAccount(int balance, double annualInterestRate) {
+	  //   status = true; 
+	    }
+
+	    @Override
+	    public void withdraw(int amount) {
+	        if (status = true) {
+	            this.withdraw(amount);
+	            if (balance < 25)
+	                status = false;
+	        }
+	    }
+
+	    @Override
+	    public void deposit(int amount) {
+	        if (status = false) {
+	        	this.deposit(amount);
+	        	if(balance => 25)
+	            status = true;
+	        } else {
+	        	this.deposit(amount);
+	        	
+	        }
+	    }
+	    
+	    public void monthlyProcess(double monthlyServiceCharges) {
+	    	if (numwithdrawls > 4) {
+	    		this.monthlyServiceCharge += 1.0;
+	    		if(balance<25) {
+	    			status = false;
+	    		}
+	    	}
+	    }
+	    
+	    
+	    @Override
+//	    public void monthlyServiceCharges() {
+//	        if (numWithdrawl > 4) {
+//	            monthlyServiceCharges += (numWithdrawl - 4);
+//	            balance -= (numWithdrawl - 4);
+//	            if (balance < 25)
+//	                status = false;
+//	        }
+//	        this.monthlyServiceCharges();
+//	    }
+
 	}
-	public void withdraw(int amount) {
-		balance -= amount;
-		numWithdrawl++;
-	}
-}
-//	public calcInterest() {
-//		int monthlyIntrestRate = yearlyIntrestRate/12;
-//		int monthlyIntrest = balance * monthlyIntrestRate;
-//		balance += monthlyIntrest
-//	}
-//	public void monthlyProcess() {
-//        balance -= monthlyServiceCharges;
-//        calcInterest();
-//        numWithdrawl = 0;
-//        numDeposit = 0;
-//        monthlyServiceCharges = 0;
-//    }
-//		
-//
-//}
